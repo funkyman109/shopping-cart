@@ -1,6 +1,9 @@
-# shopping_cart.py
+import datetime as dt
+#chose to use a 10% tax rate
+def tax(total):
+    new= total * 0.0875
+    return new
 
-#from pprint import pprint
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -25,7 +28,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-def to_usd(my_price):
+def to_usd(price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes.
     Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
@@ -33,7 +36,7 @@ def to_usd(my_price):
     Example: to_usd(4000.444444)
     Returns: $4,000.44
     """
-    return f"${my_price:,.2f}" #> $12,000.71
+    return f"${price:,.2f}" #> $12,000.71
 
 
 #print(products)
@@ -42,17 +45,43 @@ def to_usd(my_price):
 # TODO: write some Python code here to produce the desired output
 
 #info capture based on: https://www.youtube.com/watch?v=3BaGb-1cIr0
+total_price = 0
+selected_ids= []
+
 while True:
     selected_id= input("please input product identifier:")
     if selected_id== "DONE":
         break
-    #print(selected_id)
-    #print(type(selected_id))
-    matching_products= [p for p in products if str(p["id"]) == str(selected_id)] #could also convert both to integers int()
-    #print(matching_products)
-    #print(type(matching_products))
-    matching_product= matching_products[0]
-    print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
+    else:
+        selected_ids.append(selected_id)
+
+
+    #print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
 #info display/output
+#print(selected_ids)
+print("------------------------")
+print("Simple Joes Simple Shop")
+print("-----------------------")
+print("Checkout time:" ,dt.datetime.now())
+print("-----------------------")
+
+for selected_id in selected_ids:
+    matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product= matching_products[0]
+    total_price=total_price + matching_product["price"]
+    print(">>> " + matching_product["name"] + " " + to_usd(matching_product["price"]))
+
+tax_total= tax(total_price)
+Big_total= total_price + tax_total
+print("------------------------")
+print("SUBTOTAL:" + to_usd(total_price))
+print("Taxes:" + to_usd(tax_total))
+print("Total:" + to_usd(Big_total))
+print("-----------------------")
+print("Thanks for stopping into Simple Joe's")
+
+
+
+
