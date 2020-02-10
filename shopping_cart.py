@@ -1,5 +1,4 @@
 import datetime as dt
-#chose to use a 10% tax rate
 def tax(total):
     new= total * 0.0875
     return new
