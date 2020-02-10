@@ -47,13 +47,24 @@ def to_usd(price):
 #info capture based on: https://www.youtube.com/watch?v=3BaGb-1cIr0
 total_price = 0
 selected_ids= []
-
+active_ids= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 while True:
     selected_id= input("please input product identifier:")
     if selected_id== "DONE":
         break
-    else:
+    elif int(selected_id) in active_ids:
         selected_ids.append(selected_id)
+        print(selected_ids)
+    else:
+        print("indentifier not found. Please update...")
+            #taken from https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/
+        newid= input("Input new id: ")
+        newname= input("input new name: ")
+        newdepartment= input("input new department: ")
+        newaisle= input("input new aisle: ")
+        newprice= float(input("input new price value: "))
+        products.append({"id": int(newid), "name": newname, "department": newdepartment, "aisle": newaisle, "price": newprice})
+        active_ids.append(int(newid))
 
 
     #print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
@@ -70,8 +81,9 @@ print("-----------------------")
 for selected_id in selected_ids:
     matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product= matching_products[0]
-    total_price=total_price + matching_product["price"]
-    print(">>> " + matching_product["name"] + " " + to_usd(matching_product["price"]))
+    total_price= total_price + float(matching_product["price"])
+    #total_price+= float(matching_product["price"]) #Eric Hyson Code
+    print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
 
 tax_total= tax(total_price)
 Big_total= total_price + tax_total
