@@ -55,13 +55,13 @@ while True:
     else:
         print("indentifier not found. Please update and rescan.")
             #taken from https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/
-        newid= input("Input new id: ")
-        newname= input("input new name: ")
-        newdepartment= input("input new department: ")
-        newaisle= input("input new aisle: ")
-        newprice= float(input("input new price value: "))
-        products.append({"id": int(newid), "name": newname, "department": newdepartment, "aisle": newaisle, "price": newprice})
-        active_ids.append(int(newid))
+        new_id= input("Input new id: ")
+        new_name= input("input new name: ")
+        new_department= input("input new department: ")
+        new_aisle= input("input new aisle: ")
+        new_price= float(input("input new price value: "))
+        products.append({"id": int(new_id), "name": new_name, "department": new_department, "aisle": new_aisle, "price": new_price})
+        active_ids.append(int(new_id))
 
 
     #print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
