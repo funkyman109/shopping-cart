@@ -42,8 +42,6 @@ def to_usd(price):
 #print(products)
 # pprint(products)
 
-# TODO: write some Python code here to produce the desired output
-
 #info capture based on: https://www.youtube.com/watch?v=3BaGb-1cIr0
 total_price = 0
 selected_ids= []
@@ -54,7 +52,7 @@ while True:
         break
     elif int(selected_id) in active_ids:
         selected_ids.append(selected_id)
-        print(selected_ids)
+        #print(selected_ids)
     else:
         print("indentifier not found. Please update and rescan.")
             #taken from https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/
