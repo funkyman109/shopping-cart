@@ -56,7 +56,7 @@ while True:
         selected_ids.append(selected_id)
         print(selected_ids)
     else:
-        print("indentifier not found. Please update...")
+        print("indentifier not found. Please update and rescan.")
             #taken from https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/
         newid= input("Input new id: ")
         newname= input("input new name: ")
