@@ -26,4 +26,9 @@ at this point you should be able to run our application without any hiccups. We 
 python app/shopping_cart.py
 ```
 
-input your desired 
+Step 1: input your desired product identifier
+Step 2: repeat until satisfied
+additional note: when inputing new product identifier please input all requested information. Once you have added the new product please re-enter the identifier to add it to the receipt
+Step 3: when you have finished checking out enter DONE as the product identifier
+
+Enjoy your list
