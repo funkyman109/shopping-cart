@@ -39,58 +39,58 @@ def to_usd(price):
 
 if __name__ == "__main__":
 
-#print(products)
-# pprint(products)
+    #print(products)
+    # pprint(products)
 
-#info capture based on: https://www.youtube.com/watch?v=3BaGb-1cIr0
-total_price = 0
-selected_ids= []
-active_ids= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-while True:
-    selected_id= input("please input product identifier:")
-    if selected_id== "DONE":
-        break
-    elif int(selected_id) in active_ids:
-        selected_ids.append(selected_id)
-        #print(selected_ids)
-    else:
-        print("indentifier not found. Please update and rescan.")
+    #info capture based on: https://www.youtube.com/watch?v=3BaGb-1cIr0
+    total_price = 0
+    selected_ids= []
+    active_ids= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    while True:
+        selected_id= input("please input product identifier:")
+        if selected_id== "DONE":
+            break
+        elif int(selected_id) in active_ids:
+            selected_ids.append(selected_id)
+            #print(selected_ids)
+        else:
+            print("indentifier not found. Please update and rescan.")
             #taken from https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/
-        new_id= input("Input new id: ")
-        new_name= input("input new name: ")
-        new_department= input("input new department: ")
-        new_aisle= input("input new aisle: ")
-        new_price= float(input("input new price value: "))
-        products.append({"id": int(new_id), "name": new_name, "department": new_department, "aisle": new_aisle, "price": new_price})
-        active_ids.append(int(new_id))
+            new_id= input("Input new id: ")
+            new_name= input("input new name: ")
+            new_department= input("input new department: ")
+            new_aisle= input("input new aisle: ")
+            new_price= float(input("input new price value: "))
+            products.append({"id": int(new_id), "name": new_name, "department": new_department, "aisle": new_aisle, "price": new_price})
+            active_ids.append(int(new_id))
 
 
     #print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
-#info display/output
-#print(selected_ids)
-print("------------------------")
-print("Simple Joes Simple Shop")
-print("-----------------------")
-print("Checkout time:" ,dt.datetime.now())
-print("-----------------------")
+    #info display/output
+    #print(selected_ids)
+    print("------------------------")
+    print("Simple Joes Simple Shop")
+    print("-----------------------")
+    print("Checkout time:" ,dt.datetime.now())
+    print("-----------------------")
 
-for selected_id in selected_ids:
-    matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
-    matching_product= matching_products[0]
-    total_price= total_price + float(matching_product["price"])
-    #total_price+= float(matching_product["price"]) #Eric Hyson Code
-    print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
+    for selected_id in selected_ids:
+        matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_product= matching_products[0]
+        total_price= total_price + float(matching_product["price"])
+        #total_price+= float(matching_product["price"]) #Eric Hyson Code
+        print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
 
-tax_total= tax(total_price)
-Big_total= total_price + tax_total
-print("------------------------")
-print("SUBTOTAL:" + to_usd(total_price))
-print("Taxes:" + to_usd(tax_total))
-print("Total:" + to_usd(Big_total))
-print("-----------------------")
-print("Thanks for stopping into Simple Joe's")
+    tax_total= tax(total_price)
+    Big_total= total_price + tax_total
+    print("------------------------")
+    print("SUBTOTAL:" + to_usd(total_price))
+    print("Taxes:" + to_usd(tax_total))
+    print("Total:" + to_usd(Big_total))
+    print("-----------------------")
+    print("Thanks for stopping into Simple Joe's")
 
 
 
