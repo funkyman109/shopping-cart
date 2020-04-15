@@ -1,6 +1,6 @@
-from datetime import datetime
+import datetime 
 from freezegun import freeze_time
-from app.shopping_cart import to_usd, tax, find_product
+from app.shopping_cart import to_usd, tax, find_product, friendly_time
 
 def test_to_usd():
     result = to_usd(3.47)
@@ -11,10 +11,11 @@ def test_tax():
     assert result == 3.5
 
 #taken from https://pypi.org/project/freezegun/
-@freeze_time("2012-01-14")
+@freeze_time("2020-04-15 05:23 PM")
 def test_time():
-    result = datetime.now()
-    assert result == datetime(2012, 1, 14)
+    time = datetime.datetime.now()
+    result = friendly_time(time)
+    assert result == time.strftime(2020, 4, 15, 5, 23)
 
 def test_find_product():
     
