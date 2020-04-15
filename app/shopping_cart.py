@@ -9,6 +9,13 @@ def tax(total):
     new= total * 0.0875
     return new
 
+def friendly_time(time):
+    """
+    will convert a basic date time function into a easily and friendly time.
+    """
+    time = datetime.datetime.now()
+    return time.strftime("%Y-%m-%d %I:%M %p")
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -79,7 +86,7 @@ if __name__ == "__main__":
 
     #time stuff
     time = datetime.datetime.now()
-    ftimestamp = time.strftime("%Y-%m-%d %I:%M %p")
+    ftimestamp = friendly_time(time)
     #print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
@@ -93,12 +100,7 @@ if __name__ == "__main__":
 
     for selected_id in selected_ids:
         total_price = find_product(selected_id, total_price, products, selected_id)
-        # matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
-        # matching_product= matching_products[0]
-        # total_price= total_price + float(matching_product["price"])
-        # #total_price+= float(matching_product["price"]) #Eric Hyson Code
-        # print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
-
+     
     tax_total= tax(total_price)
     Big_total= total_price + tax_total
     print("------------------------")
