@@ -1,8 +1,13 @@
-import datetime as dt
+import datetime
 def tax(total):
+    """
+    extracts the amount of tax that is owed on a fixed amount of money. can be used 
+    on a single item or a sumation but must be a float or integer.
+    exampe: tax(40)
+    returns: 3.5
+    """
     new= total * 0.0875
     return new
-
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -37,6 +42,13 @@ def to_usd(price):
     """
     return f"${price:,.2f}" #> $12,000.71
 
+def find_product(i, total_price, products, selected_id):
+    matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product= matching_products[0]
+    total_price= total_price + float(matching_product["price"])
+    print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
+    return total_price
+
 if __name__ == "__main__":
 
     #print(products)
@@ -65,6 +77,9 @@ if __name__ == "__main__":
             active_ids.append(int(new_id))
 
 
+    #time stuff
+    time = datetime.datetime.now()
+    ftimestamp = time.strftime("%Y-%m-%d %I:%M %p")
     #print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
@@ -73,15 +88,16 @@ if __name__ == "__main__":
     print("------------------------")
     print("Simple Joes Simple Shop")
     print("-----------------------")
-    print("Checkout time:" ,dt.datetime.now())
+    print("Checkout time:" ,ftimestamp)
     print("-----------------------")
 
     for selected_id in selected_ids:
-        matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
-        matching_product= matching_products[0]
-        total_price= total_price + float(matching_product["price"])
-        #total_price+= float(matching_product["price"]) #Eric Hyson Code
-        print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
+        total_price = find_product(selected_id, total_price, products, selected_id)
+        # matching_products= [p for p in products if str(p["id"]) == str(selected_id)]
+        # matching_product= matching_products[0]
+        # total_price= total_price + float(matching_product["price"])
+        # #total_price+= float(matching_product["price"]) #Eric Hyson Code
+        # print(">>> " , matching_product["name"] , " " , to_usd(matching_product["price"]))
 
     tax_total= tax(total_price)
     Big_total= total_price + tax_total
