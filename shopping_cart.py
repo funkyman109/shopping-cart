@@ -37,6 +37,7 @@ def to_usd(price):
     """
     return f"${price:,.2f}" #> $12,000.71
 
+if __name__ == "__main__":
 
 #print(products)
 # pprint(products)
