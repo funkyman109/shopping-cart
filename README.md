@@ -25,3 +25,5 @@ at this point you should be able to run our application without any hiccups. We 
 ```sh
 python app/shopping_cart.py
 ```
+
+input your desired 
